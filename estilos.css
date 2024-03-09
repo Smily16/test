@@ -1,0 +1,12 @@
+body{
+    background-color: rgb(148, 217, 211);
+}
+h1{
+    color: black;
+}
+button{
+    width: 40%;
+    height: 40%;
+    background-color: red;
+    font-size: 40;
+}
