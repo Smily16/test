@@ -1,24 +1,30 @@
 #include<iostream>
 #include<cstdlib> //Libreria para generar numeros aleatorios
 #include <ctime> // Para obtener el tiempo actual
-
 using namespace std;
 
-//Constantes
-const char caracteres[36] ={'q','w','e','r','t','y','u','i','o','p',
-						 	'a','s','d','f','g','h','j','k','l','z',
-							'x','c','v','b','n','m','1','2','3',
-							'4','5','6','7','8','9','0'};
-						 
 //Definicion de funciones
 void dibujar(char arregloDeCaracteres[]);
 void aleatorizar(char arregloDeCaracteres[]);
+short menu(short &opc);
 
 int main(){
-    char caracteresDeJuego[5] = {'a','a','a','a','a'};
-		
-	aleatorizar(caracteresDeJuego);	
-    dibujar(caracteresDeJuego);
+	system("color 0");
+    char caracteresDeJuego[5];
+    short opc;
+    
+    do{ 	
+	    switch(menu(opc)){
+	    	case 0:
+	    	break;
+	    	
+	    	case 1:
+			aleatorizar(caracteresDeJuego);	
+			dibujar(caracteresDeJuego);
+			break;
+	    }
+    }while(opc != 0);
+
     return 0;
 }
 
@@ -32,9 +38,21 @@ void dibujar(char AC[]){
 
 void aleatorizar(char arregloDeCaracteres[]){
 	srand(time(NULL)); // Establecer la semilla con el tiempo actual
+	
+	//establesco el caracter usando el codigo ascii, que desde el 97-122 son las
+	//letras minusculas del abecedario
 	for(int i = 0; i<5; i++){
-		arregloDeCaracteres[i] = caracteres[rand()%36];
+		//Rand()%26 genera un numero aleatorio entre 0-25
+		arregloDeCaracteres[i] = 97+rand()%26;
 	}
+}
+
+short menu(short &opc){
+	cout<<"############Juego de memoria############"<<endl;
+	cout<<"1. Jugar"<<endl;
+	cout<<"0. Salir"<<endl;
+	cin>>opc;
+	return opc;
 }
 
 
